@@ -7,8 +7,8 @@
 
 #include "Image.h"
 
-#define WIDTH 2
-#define HEIGHT 2
+#define WIDTH 1280
+#define HEIGHT 800
 
 int main(){
 
@@ -22,13 +22,11 @@ void* create_Pixel(void* empty){
 	Pixel* pixel = malloc(sizeof(Pixel)); 
 	
 
-
-    //ssize_t has the ability to return negative values to indicate an error
     //This is the result of the random number 
 	int red = chooseRandNum(); 
     int blue = chooseRandNum(); 
     int green = chooseRandNum(); 
-	int i; 
+
 
 	//Then, set the values
 	pixel->red = red; 
@@ -82,9 +80,14 @@ Frame* create_Frame(int cameraNum){
 	return frame; 
 }
 
+//Frees a frame
 void free_Frame(Frame* frame){
+	//The row
 	int r = 0; 
+	//The column
 	int c = 0; 
+	
+	//Goes through each pixel freeing it 
 	for(r = 0; r < HEIGHT; r++){
 		for(c = 0; c < WIDTH; c++){
 			free(frame->pixel[r][c]);  

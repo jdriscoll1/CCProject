@@ -24,15 +24,22 @@ typedef struct Frame{
 }Frame; 
 
 
-/*The function to create a pixel, setting its values ranodmly*/
+/*The function to create a pixel, setting its values ranodmly
+@param empty --> Necessary paramater for required pthread
+@return --> Returns the created pixel*/
 void* create_Pixel(void* empty); 
 
-/*Opens dev/urandom */
+/*Opens dev/urandom and returns a random number
+@return --> Returns a random number determined by dev/urandom*/
 unsigned char chooseRandNum(); 
 
-/*The function that creates a frame, creates a pixel*/
+/*The function that creates a frame, creates a pixel
+@param cameraNum --> The camera which created this particular frame
+@return --> Returns the frame that was created*/
 Frame* create_Frame(int cameraNum); 
 
+/*Frees an inputted frame
+@param frame --> The inputted frame*/
 void free_Frame(Frame* frame);
 
 //Prints a frame
